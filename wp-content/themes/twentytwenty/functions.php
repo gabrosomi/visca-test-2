@@ -183,6 +183,19 @@ require get_template_directory() . '/inc/custom-css.php';
 // Block Patterns.
 require get_template_directory() . '/inc/block-patterns.php';
 
+// Sportsbook.
+require get_template_directory() . '/inc/sportsbooks.php';
+
+function find_sportsbooks($sportsbook) {
+	$partners = get_sportsbooks();
+	return $partners->$sportsbook;
+}
+
+function get_sportsbooks() {
+	$partners = file_get_contents( get_template_directory() . '/inc/partners.json');
+	return json_decode($partners);
+}
+
 /**
  * Register and Enqueue Styles.
  *

@@ -33,6 +33,14 @@
 			if ( is_search() || ! is_singular() && 'summary' === get_theme_mod( 'blog_content', 'full' ) ) {
 				the_excerpt();
 			} else {
+
+				$partner = get_post_meta( get_the_ID(), 'partner', true);
+				$partner = find_sportsbooks($partner);
+
+				if($partner){
+					echo '<h2 class="entry-title heading-size-1">' . $partner . '</h2>';
+				}
+				
 				the_content( __( 'Continue reading', 'twentytwenty' ) );
 			}
 			?>
